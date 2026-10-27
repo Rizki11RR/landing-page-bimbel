@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Bimbel Avicena Yogyakarta: bimbingan belajar TK, SD, SMP, SMA semua mapel, plus Tahsin-Tahfidz &amp; Bimbingan Ibadah. 5 unit di area Bantul, DIY. Sejak 2013."/>
+<meta name="theme-color" content="#003A9B"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Bimbel Avicena Yogyakarta | Bimbingan Belajar Islami &amp; Berprestasi di Bantul"/>
+<meta property="og:description" content="Privat di kantor atau rumah, klasikal Tahsin-Tahfidz, Calistung, dan Cendekia Mapel. 5 unit di area Bantul."/>
+<meta property="og:image" content="assets/logo.png"/>
+<link rel="icon" type="image/png" href="assets/favicon.png"/>
+<title>Bimbel Avicena Yogyakarta | Bimbingan Belajar Islami &amp; Berprestasi di Bantul</title>
+<!-- Google Fonts: Plus Jakarta Sans & Poppins -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="assets/leaflet/leaflet.css" rel="stylesheet"/>
+<link href="assets/style.css" rel="stylesheet"/>
+<style>
+    .font-poppins {
+      font-family: 'Poppins', 'Plus Jakarta Sans', sans-serif;
+    }
+    .orbit-ring {
+      border: 1.5px dashed rgba(95, 251, 218, 0.35);
+      border-radius: 9999px;
+      position: absolute;
+      pointer-events: none;
+    }
+    .orbit-ring-coral {
+      border: 1.5px dashed rgba(255, 180, 168, 0.3);
+      border-radius: 9999px;
+      position: absolute;
+      pointer-events: none;
+    }
+    .custom-shadow {
+      box-shadow: 0 8px 24px -4px rgba(0, 58, 155, 0.08);
+    }
+    .custom-shadow-hover:hover {
+      box-shadow: 0 16px 36px -4px rgba(0, 79, 184, 0.16);
+      transform: translateY(-3px);
+    }
+    .cta-coral {
+      background-color: #F4604C;
+      color: #ffffff;
+      box-shadow: 0 8px 20px -2px rgba(244, 96, 76, 0.35);
+    }
+    .cta-coral:hover {
+      background-color: #e04e3b;
+      box-shadow: 0 12px 24px -2px rgba(244, 96, 76, 0.45);
+    }
+  
+    .av-pin{width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#004fb8;border:3px solid #fff;box-shadow:0 6px 14px rgba(0,58,155,.35);display:block;position:relative}
+    .av-pin::after{content:"";position:absolute;inset:8px;border-radius:50%;background:#fff}
+    .av-pin.pusat{background:#F4604C;box-shadow:0 6px 14px rgba(244,96,76,.45)}
+    .leaflet-container{font-family:'Plus Jakarta Sans',sans-serif}
+    a:focus-visible,button:focus-visible{outline:3px solid #00C9AB;outline-offset:2px}
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important}
+      html{scroll-behavior:auto!important}
+    }
+  </style>
+</head>
+<body class="bg-[#F3F7FC] text-on-surface font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- ==================== 1. STICKY NAVBAR ==================== -->
+<header class="sticky top-0 z-50 w-full bg-surface-container-lowest/95 dark:bg-inverse-surface/95 backdrop-blur-md shadow-sm dark:shadow-none border-b border-outline-variant/30 dark:border-outline/20 transition-all duration-200">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin max-w-7xl mx-auto h-20">
+<!-- Brand Logo Anchor -->
+<a class="flex items-center gap-3 active:scale-95 transition-transform duration-150 group" href="#beranda">
+<img alt="Logo Bimbel Avicena Yogyakarta" class="h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-200" height="48" src="assets/logo.png" width="59"/>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight">Bimbel Avicena</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold tracking-wider -mt-1">YOGYAKARTA • BANTUL</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary dark:text-secondary-fixed font-semibold border-b-2 border-primary dark:border-secondary-fixed pb-1 font-label-lg text-label-lg transition-colors duration-200" href="#beranda">Beranda</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary font-label-lg text-label-lg transition-colors duration-200" href="#program">Program</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary font-label-lg text-label-lg transition-colors duration-200" href="#keunggulan">Keunggulan</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary font-label-lg text-label-lg transition-colors duration-200" href="#lokasi-cabang">Lokasi Cabang</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary font-label-lg text-label-lg transition-colors duration-200" href="#kontak">Kontak</a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+<a class="hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-surface-container hover:bg-surface-variant text-primary transition-colors duration-150" href="https://wa.me/6281775285108" rel="noopener noreferrer" target="_blank" title="Hubungi Kami">
+<span class="material-symbols-outlined text-[20px]" data-icon="call">call</span>
+</a>
+<a class="hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-secondary-container/30 hover:bg-secondary-container/50 text-secondary transition-colors duration-150" href="https://wa.me/6289637952708" rel="noopener noreferrer" target="_blank" title="Chat WhatsApp">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat">chat</span>
+</a>
+<a class="cta-coral px-6 py-2.5 rounded-full font-label-lg text-label-lg font-bold tracking-wide active:scale-95 transition-all duration-150 inline-flex items-center gap-2" href="#lokasi-cabang">
+<span>Daftar Sekarang</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</header>
+<!-- ==================== 2. HERO SECTION ==================== -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#003A9B] via-[#004EA7] to-[#0060D0] text-on-primary py-16 md:py-24" id="beranda">
+<!-- Subtle Orbit & Geometric Accents -->
+<div class="orbit-ring w-[500px] h-[500px] -top-32 -left-24 opacity-40"></div>
+<div class="orbit-ring w-[750px] h-[750px] -bottom-48 -right-36 opacity-30"></div>
+<div class="orbit-ring-coral w-[320px] h-[320px] top-1/4 left-1/3 opacity-25"></div>
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Hero Left: Typography & CTAs -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Ribbon Badge -->
+<div class="inline-flex items-center gap-2 bg-[#00C9AB]/20 border border-[#00C9AB]/40 px-4 py-1.5 rounded-full w-fit backdrop-blur-sm">
+<span class="material-symbols-outlined text-[#5ffbda] text-[18px]" data-icon="verified">verified</span>
+<span class="text-secondary-fixed text-label-md font-label-md font-bold uppercase tracking-wider">Berkualitas &amp; Terpercaya Sejak 2013</span>
+</div>
+<!-- Headline -->
+<h1 class="font-poppins text-display-lg-mobile md:text-display-lg font-extrabold tracking-tight text-white leading-tight">
+          Waktunya Siapkan Belajar Lebih <span class="text-[#5ffbda] underline decoration-[#F4604C] decoration-4 underline-offset-8">Intensif</span> Bersama <span class="text-[#D8E01A]">Avicena</span>
+</h1>
+<!-- Subheadline -->
+<p class="text-primary-fixed font-body-lg text-body-lg max-w-2xl leading-relaxed">
+          Bimbel berkualitas &amp; terpercaya sejak 2013 di area Bantul, DIY. Melayani jenjang <strong class="text-white font-semibold">TK, SD, SMP, SMA</strong> untuk semua mata pelajaran, dipadukan kurikulum <strong class="text-[#5ffbda] font-semibold">Tahsin-Tahfidz &amp; Bimbingan Ibadah</strong> berakhlaq mulia.
+        </p>
+<!-- CTA Buttons -->
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="cta-coral px-8 py-4 rounded-full font-label-lg text-label-lg font-bold tracking-wide active:scale-95 transition-all duration-150 inline-flex items-center gap-2 text-base" href="#lokasi-cabang">
+<span class="material-symbols-outlined text-[20px]" data-icon="how_to_reg">how_to_reg</span>
+<span>Daftar Sekarang</span>
+</a>
+<a class="px-7 py-4 rounded-full border-2 border-white/70 hover:border-white hover:bg-white/10 text-white font-label-lg text-label-lg font-bold tracking-wide active:scale-95 transition-all duration-150 inline-flex items-center gap-2 text-base backdrop-blur-sm" href="#lokasi-cabang">
+<span class="material-symbols-outlined text-[20px]" data-icon="location_on">location_on</span>
+<span>Lihat Lokasi Cabang</span>
+</a>
+</div>
+<!-- Social Proof Metric Micro-strip -->
+<div class="pt-6 border-t border-white/15 flex flex-wrap items-center gap-8 text-white/90">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#D8E01A] text-[22px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-lg">Sejak 2013</span>
+<span class="text-white/70 text-body-sm">Mengabdi di DIY</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#5ffbda] text-[22px]" data-icon="home_work">home_work</span>
+<span class="font-bold text-label-lg">5 Unit Cabang</span>
+<span class="text-white/70 text-body-sm">Tersebar di Bantul</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ffdad4] text-[22px]" data-icon="groups">groups</span>
+<span class="font-bold text-label-lg">Semua Mapel</span>
+<span class="text-white/70 text-body-sm">TK sampai SMA</span>
+</div>
+</div>
+</div>
+<!-- Hero Right: Dynamic Visual Canvas with Badges -->
+<div class="lg:col-span-5 relative flex justify-center items-center">
+<!-- Glowing Ambient Circle -->
+<div class="absolute w-80 h-80 rounded-full bg-[#00C9AB]/20 blur-3xl -z-10"></div>
+<div class="absolute w-64 h-64 rounded-full bg-[#F4604C]/20 blur-2xl right-0 bottom-0 -z-10"></div>
+<!-- Main Card Composite -->
+<div class="relative bg-surface-container-lowest/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-2xl max-w-md w-full">
+<!-- Image Element (Photo of student studying) -->
+<div class="relative rounded-2xl overflow-hidden shadow-inner border border-white/20 aspect-[4/3] bg-surface-container">
+<img alt="Jam weker di atas tumpukan buku, tanda waktunya belajar lebih intensif" class="w-full h-full object-cover" height="728" src="assets/hero.jpg" width="1000"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 text-white">
+<span class="text-label-sm uppercase font-bold tracking-wider text-[#5ffbda] block">Waktunya Belajar</span>
+<span class="text-headline-sm font-semibold">Lebih Intensif Bersama Avicena</span>
+</div>
+</div>
+<!-- Floating Badges Pill Layer -->
+<div class="absolute -top-4 -left-4 bg-surface-container-lowest text-primary px-4 py-2 rounded-full shadow-lg border border-[#E4EDF7] flex items-center gap-2 animate-bounce" style="animation-duration: 4s;">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="calendar_month">calendar_month</span>
+<span class="font-bold text-label-md">Sejak 2013</span>
+</div>
+<div class="absolute -bottom-4 -left-3 bg-[#D8E01A] text-[#00398a] px-4 py-2 rounded-full shadow-lg font-bold text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="school">school</span>
+<span>TK - SD - SMP - SMA</span>
+</div>
+<div class="absolute top-1/2 -right-5 bg-surface-container-lowest text-on-surface px-4 py-2.5 rounded-2xl shadow-xl border border-[#E4EDF7] flex items-center gap-2 transform translate-y-[-50%]">
+<div class="w-8 h-8 rounded-full bg-secondary-container/50 flex items-center justify-center text-secondary font-bold">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_stories">auto_stories</span>
+</div>
+<div>
+<p class="text-label-sm text-outline font-medium -mb-0.5">Materi</p>
+<p class="text-label-md font-bold text-primary">Semua Mapel</p>
+</div>
+</div>
+<div class="absolute -bottom-5 right-4 cta-coral px-4 py-2 rounded-full shadow-lg text-white font-bold text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="menu_book">menu_book</span>
+<span>Tahsin &amp; Bimbingan Ibadah</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 3. TRUST STRIP ==================== -->
+<section class="bg-surface-container-lowest border-y border-outline-variant/30 py-8 relative shadow-sm">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-surface-container-low transition-colors duration-150">
+<div class="w-13 h-13 min-w-[52px] min-h-[52px] rounded-2xl bg-[#00398a]/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface font-headline-sm text-[16px] leading-tight">Berkualitas &amp; Terpercaya</h4>
+<p class="text-on-surface-variant text-body-sm mt-0.5">Sejak 2013 di Yogyakarta</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-surface-container-low transition-colors duration-150">
+<div class="w-13 h-13 min-w-[52px] min-h-[52px] rounded-2xl bg-secondary-container/40 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]" data-icon="pin_drop">pin_drop</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface font-headline-sm text-[16px] leading-tight">5 Unit di Area Bantul</h4>
+<p class="text-on-surface-variant text-body-sm mt-0.5">Mudah dijangkau &amp; strategis</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-surface-container-low transition-colors duration-150">
+<div class="w-13 h-13 min-w-[52px] min-h-[52px] rounded-2xl bg-[#D8E01A]/30 text-[#00398a] flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]" data-icon="local_library">local_library</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface font-headline-sm text-[16px] leading-tight">TK • SD • SMP • SMA</h4>
+<p class="text-on-surface-variant text-body-sm mt-0.5">Semua Mapel Sekolah</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-surface-container-low transition-colors duration-150">
+<div class="w-13 h-13 min-w-[52px] min-h-[52px] rounded-2xl bg-tertiary-fixed text-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface font-headline-sm text-[16px] leading-tight">Tahsin &amp; Bimbingan Ibadah</h4>
+<p class="text-on-surface-variant text-body-sm mt-0.5">Pendidikan berlandaskan adab</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 4. PILIHAN PROGRAM AVICENA ==================== -->
+<section class="py-20 md:py-28 relative" id="program">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="inline-block px-4 py-1 rounded-full bg-[#00C9AB]/15 text-secondary font-label-md text-label-md font-bold uppercase tracking-wider mb-3">
+          Katalog Layanan Belajar
+        </span>
+<h2 class="text-headline-xl font-headline-xl text-primary font-poppins font-extrabold tracking-tight">
+          Pilihan Program Unggulan Avicena
+        </h2>
+<p class="text-on-surface-variant text-body-lg font-body-lg mt-3">
+          Tersedia format privat intensif maupun klasikal kelompok dengan pendekatan personal untuk memaksimalkan potensi putra-putri Anda.
+        </p>
+</div>
+<!-- 6 Cards in 3x2 Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Privat di Kantor -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[32px]" data-icon="desk">desk</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-sm font-label-sm uppercase bg-[#00398a]/10 text-primary font-bold px-2.5 py-0.5 rounded-full">1 Tutor 1 Siswa</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold">Fokus Penuh</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface font-poppins mb-3">Privat di Kantor</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+              Bimbingan belajar tatap muka langsung di unit Avicena, didampingi pengajar secara personal sesuai kebutuhan siswa.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-label-sm text-outline font-semibold">Jenjang: TK s/d SMA</span>
+<a class="text-primary font-label-lg font-bold inline-flex items-center gap-1 group-hover:text-primary-container transition-colors" href="https://wa.me/6281775285108?text=Halo%20Admin%20Avicena,%20saya%20tertarik%20tanya%20program%20Privat%20di%20Kantor" rel="noopener noreferrer" target="_blank">
+<span>Tanya Program Ini</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Privat di Rumah Siswa -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-secondary/10 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-secondary-container/40 text-secondary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[32px]" data-icon="home_app_logo">home_app_logo</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-sm font-label-sm uppercase bg-[#00C9AB]/20 text-secondary font-bold px-2.5 py-0.5 rounded-full">Tutor Datang ke Rumah</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">Praktis &amp; Aman</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface font-poppins mb-3">Privat di Rumah Siswa</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+              Pengajar Avicena datang langsung ke rumah siswa, sehingga keluarga tidak perlu repot antar-jemput.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-label-sm text-outline font-semibold">Jenjang: TK s/d SMA</span>
+<a class="text-primary font-label-lg font-bold inline-flex items-center gap-1 group-hover:text-primary-container transition-colors" href="https://wa.me/6281775285108?text=Halo%20Admin%20Avicena,%20saya%20tertarik%20tanya%20program%20Privat%20di%20Rumah" rel="noopener noreferrer" target="_blank">
+<span>Tanya Program Ini</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Klasikal Tahsin-Tahfidz -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-tertiary-fixed/40 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-tertiary-fixed text-tertiary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[32px]" data-icon="auto_stories">auto_stories</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-sm font-label-sm uppercase bg-tertiary-fixed text-tertiary font-bold px-2.5 py-0.5 rounded-full">Nilai Qur'ani</span>
+<span class="text-label-sm font-label-sm text-[#00398a] font-bold">Makhraj &amp; Hafalan</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface font-poppins mb-3">Klasikal Tahsin-Tahfidz</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+              Belajar membaca Al-Qur'an dengan baik dan benar (tahsin) serta menghafal (tahfidz) dalam kelas bersama, dengan pendekatan yang ramah anak.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-label-sm text-outline font-semibold">Semua Usia &amp; Jenjang</span>
+<a class="text-primary font-label-lg font-bold inline-flex items-center gap-1 group-hover:text-primary-container transition-colors" href="https://wa.me/6281775285108?text=Halo%20Admin%20Avicena,%20saya%20tertarik%20tanya%20program%20Klasikal%20Tahsin-Tahfidz" rel="noopener noreferrer" target="_blank">
+<span>Tanya Program Ini</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 4: Klasikal Calistung -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-[#D8E01A]/20 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-[#D8E01A]/30 text-on-surface flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[32px]" data-icon="spellcheck">spellcheck</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-sm font-label-sm uppercase bg-[#D8E01A]/40 text-[#00398a] font-bold px-2.5 py-0.5 rounded-full">Usia Dini &amp; Pra-SD</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold">Menyenangkan</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface font-poppins mb-3">Klasikal Calistung</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+              Belajar membaca, menulis, dan berhitung (calistung) dalam kelas bersama dengan cara yang menyenangkan untuk anak TK dan kelas awal SD.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-label-sm text-outline font-semibold">Jenjang: TK &amp; SD Awal</span>
+<a class="text-primary font-label-lg font-bold inline-flex items-center gap-1 group-hover:text-primary-container transition-colors" href="https://wa.me/6281775285108?text=Halo%20Admin%20Avicena,%20saya%20tertarik%20tanya%20program%20Klasikal%20Calistung" rel="noopener noreferrer" target="_blank">
+<span>Tanya Program Ini</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 5: Klasikal Cendekia Mapel -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-primary-fixed-dim/20 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[32px]" data-icon="calculate">calculate</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-sm font-label-sm uppercase bg-primary-fixed text-primary font-bold px-2.5 py-0.5 rounded-full">Kelas Klasikal</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">Semua Mapel</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface font-poppins mb-3">Klasikal Cendekia Mapel</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+              Belajar bersama dalam kelas untuk memperdalam berbagai mata pelajaran sekolah, dari SD sampai SMA.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-label-sm text-outline font-semibold">Jenjang: SD, SMP, SMA</span>
+<a class="text-primary font-label-lg font-bold inline-flex items-center gap-1 group-hover:text-primary-container transition-colors" href="https://wa.me/6281775285108?text=Halo%20Admin%20Avicena,%20saya%20tertarik%20tanya%20program%20Klasikal%20Cendekia%20Mapel" rel="noopener noreferrer" target="_blank">
+<span>Tanya Program Ini</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 6: Sekolah Wanita Avicena -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-[#F4604C]/10 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-tertiary-fixed text-tertiary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[32px]" data-icon="family_restroom">family_restroom</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-sm font-label-sm uppercase bg-[#F4604C]/15 text-[#F4604C] font-bold px-2.5 py-0.5 rounded-full">Program Eksklusif</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold">Tanya Admin</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface font-poppins mb-3">Sekolah Wanita Avicena</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+              Program khusus untuk perempuan dengan pembelajaran bernuansa Islami. Tanyakan materi dan jadwal terbaru langsung ke admin.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-label-sm text-outline font-semibold">Khusus Perempuan</span>
+<a class="text-primary font-label-lg font-bold inline-flex items-center gap-1 group-hover:text-primary-container transition-colors" href="https://wa.me/6289637952708?text=Halo%20Admin%20Avicena,%20saya%20tertarik%20tanya%20program%20Sekolah%20Wanita%20Avicena" rel="noopener noreferrer" target="_blank">
+<span>Tanya Program Ini</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 5. KENAPA MEMILIH AVICENA? ==================== -->
+<section class="py-20 md:py-28 bg-[#F3F7FC] relative overflow-hidden border-t border-outline-variant/20" id="keunggulan">
+<div class="orbit-ring w-[600px] h-[600px] -right-32 top-10 opacity-30"></div>
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin relative z-10">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-label-md text-label-md font-bold uppercase tracking-wider mb-3">
+          Nilai Keunggulan Kami
+        </span>
+<h2 class="text-headline-xl font-headline-xl text-on-surface font-poppins font-extrabold tracking-tight">
+          Kenapa Memilih <span class="text-primary">Bimbel Avicena?</span>
+</h2>
+<p class="text-on-surface-variant text-body-lg font-body-lg mt-3">
+          Menggabungkan ketuntasan akademik modern dengan pembiasaan adab Islami di lingkungan belajar yang nyaman dan bersahabat.
+        </p>
+</div>
+<!-- 6 Benefit Blocks -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Benefit 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-[#E4EDF7] custom-shadow hover:border-primary/30 transition-all duration-200">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/40 text-secondary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[26px]" data-icon="psychology">psychology</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-2">Pengajar Berpengalaman &amp; Ramah Anak</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Pengajar yang sabar dan membimbing dengan pendekatan kekeluargaan, supaya anak nyaman dan semangat belajar.
+          </p>
+</div>
+<!-- Benefit 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-[#E4EDF7] custom-shadow hover:border-primary/30 transition-all duration-200">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[26px]" data-icon="menu_book">menu_book</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-2">Semua Jenjang &amp; Semua Mapel Lengkap</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Dari calistung untuk anak TK sampai mata pelajaran SMA, semua mapel bisa dibimbing sesuai kebutuhan siswa.
+          </p>
+</div>
+<!-- Benefit 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-[#E4EDF7] custom-shadow hover:border-primary/30 transition-all duration-200">
+<div class="w-12 h-12 rounded-2xl bg-[#D8E01A]/30 text-[#00398a] flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[26px]" data-icon="tune">tune</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-2">Pilihan Belajar yang Fleksibel</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Pilih privat di kantor, privat di rumah siswa, atau kelas klasikal, sesuai kenyamanan dan kebutuhan keluarga.
+          </p>
+</div>
+<!-- Benefit 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-[#E4EDF7] custom-shadow hover:border-primary/30 transition-all duration-200">
+<div class="w-12 h-12 rounded-2xl bg-tertiary-fixed text-tertiary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[26px]" data-icon="mosque">mosque</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-2">Pendekatan Nilai Islami &amp; Tahsin-Tahfidz</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Belajar akademik berjalan bersama pembinaan membaca Al-Qur&#39;an (tahsin-tahfidz) dan bimbingan ibadah.
+          </p>
+</div>
+<!-- Benefit 5 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-[#E4EDF7] custom-shadow hover:border-primary/30 transition-all duration-200">
+<div class="w-12 h-12 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[26px]" data-icon="near_me">near_me</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-2">Unit Dekat dari Rumah</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Lima unit di Kasihan, Bantul, dan Pajangan, jadi mudah dijangkau dari rumah.
+          </p>
+</div>
+<!-- Benefit 6 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-[#E4EDF7] custom-shadow hover:border-primary/30 transition-all duration-200">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/40 text-secondary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[26px]" data-icon="history_edu">history_edu</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-2">Melayani Sejak 2013</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Lebih dari satu dekade mendampingi siswa belajar di Bantul dan sekitarnya.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 6. LOKASI CABANG BANTUL ==================== -->
+<section class="py-20 md:py-28 bg-surface-container-lowest relative" id="lokasi-cabang">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="inline-block px-4 py-1 rounded-full bg-[#00C9AB]/15 text-secondary font-label-md text-label-md font-bold uppercase tracking-wider mb-3">
+          Jangkauan Wilayah Kami
+        </span>
+<h2 class="text-headline-xl font-headline-xl text-primary font-poppins font-extrabold tracking-tight">
+          Temukan Unit Avicena Terdekat di Bantul
+        </h2>
+<p class="text-on-surface-variant text-body-lg font-body-lg mt-3">
+          Pilih lokasi yang paling dekat dengan tempat tinggal Anda untuk kemudahan belajar optimal putra-putri tercinta.
+        </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Side: Interactive Stylized Map of Bantul -->
+<div class="lg:col-span-5 bg-surface-container-low rounded-3xl p-6 border border-[#E4EDF7] sticky top-28 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold">Peta Persebaran Unit Bantul</h3>
+<span class="text-label-sm font-label-sm text-secondary font-bold bg-[#00C9AB]/20 px-2.5 py-1 rounded-full">5 Cabang Aktif</span>
+</div>
+<div class="relative w-full h-[380px] rounded-2xl overflow-hidden border border-outline-variant/30 z-0" id="map" role="region" aria-label="Peta lokasi unit Bimbel Avicena"></div>
+<div class="mt-4 p-3 bg-white rounded-xl border border-outline-variant/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]" data-icon="info">info</span>
+<p class="text-body-sm text-on-surface-variant">
+              Klik pin untuk melihat unit. Peta bisa digeser dan diperbesar. Tombol daftar ada di kartu tiap unit.
+            </p>
+</div>
+</div>
+<!-- Right Side: 5 Branch Cards -->
+<div class="lg:col-span-7 flex flex-col gap-5">
+<!-- Branch 1: Unit Pusat -->
+<div class="bg-white rounded-2xl p-6 border-2 border-primary/20 shadow-md hover:border-primary transition-all duration-200" data-unit-card id="unit-pusat">
+<div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-bold bg-[#F4604C] text-white">Kantor Pusat</span>
+<h4 class="text-headline-sm font-headline-sm font-bold text-primary">1. Unit Pusat Sembungan</h4>
+</div>
+<a class="text-label-md font-bold text-primary flex items-center gap-1 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Sembungan+Bangunjiwo+Kasihan+Bantul" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="map">map</span>
+<span>Lihat di Maps</span>
+</a>
+</div>
+<p class="text-on-surface-variant text-body-md flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5" data-icon="home_pin">home_pin</span>
+<span>Sembungan RT 05, Bangunjiwo, Kasihan, Bantul, DIY</span>
+</p>
+<div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-outline-variant/20">
+<div class="text-body-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#00C9AB] text-[20px]" data-icon="call">call</span>
+<span>WA: 0817-7528-5108</span>
+</div>
+<a class="cta-coral px-5 py-2.5 rounded-full font-label-md text-label-md font-bold inline-flex items-center gap-2 active:scale-95 transition-all" href="https://wa.me/6281775285108?text=Assalamu%27alaikum%20Admin,%20saya%20ingin%20mendaftar%20bimbel%20di%20Unit%20Pusat%20Sembungan" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+<span>Daftar di Unit Ini</span>
+</a>
+</div>
+</div>
+<!-- Branch 2: Unit 2 Tamantirto -->
+<div class="bg-white rounded-2xl p-6 border border-[#E4EDF7] shadow-sm hover:border-primary transition-all duration-200" data-unit-card id="unit-2">
+<div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-bold bg-[#00C9AB]/20 text-secondary">Unit 2</span>
+<h4 class="text-headline-sm font-headline-sm font-bold text-on-surface">2. Unit 2 Tamantirto</h4>
+</div>
+<a class="text-label-md font-bold text-primary flex items-center gap-1 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Tegalsari+Tamantirto+Kasihan+Bantul" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="map">map</span>
+<span>Lihat di Maps</span>
+</a>
+</div>
+<p class="text-on-surface-variant text-body-md flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5" data-icon="home_pin">home_pin</span>
+<span>Tegalsari RT 01, DK IV, Tamantirto, Kasihan, Bantul</span>
+</p>
+<div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-outline-variant/20">
+<div class="text-body-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#00C9AB] text-[20px]" data-icon="call">call</span>
+<span>WA: 0896-3795-2708</span>
+</div>
+<a class="cta-coral px-5 py-2.5 rounded-full font-label-md text-label-md font-bold inline-flex items-center gap-2 active:scale-95 transition-all" href="https://wa.me/6289637952708?text=Assalamu%27alaikum%20Admin,%20saya%20ingin%20mendaftar%20bimbel%20di%20Unit%202%20Tamantirto" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+<span>Daftar di Unit Ini</span>
+</a>
+</div>
+</div>
+<!-- Branch 3: Unit 3 Bangunjiwo -->
+<div class="bg-white rounded-2xl p-6 border border-[#E4EDF7] shadow-sm hover:border-primary transition-all duration-200" data-unit-card id="unit-3">
+<div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-bold bg-[#00C9AB]/20 text-secondary">Unit 3</span>
+<h4 class="text-headline-sm font-headline-sm font-bold text-on-surface">3. Unit 3 Bangunjiwo (Salakan)</h4>
+</div>
+<a class="text-label-md font-bold text-primary flex items-center gap-1 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Lemahdadi+Bangunjiwo+Kasihan+Bantul" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="map">map</span>
+<span>Lihat di Maps</span>
+</a>
+</div>
+<p class="text-on-surface-variant text-body-md flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5" data-icon="home_pin">home_pin</span>
+<span>Lemahdadi RT 02, Salakan, Bangunjiwo, Kasihan, Bantul</span>
+</p>
+<div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-outline-variant/20">
+<div class="text-body-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#00C9AB] text-[20px]" data-icon="call">call</span>
+<span>WA: 0895-3631-28218</span>
+</div>
+<a class="cta-coral px-5 py-2.5 rounded-full font-label-md text-label-md font-bold inline-flex items-center gap-2 active:scale-95 transition-all" href="https://wa.me/62895363128218?text=Assalamu%27alaikum%20Admin,%20saya%20ingin%20mendaftar%20bimbel%20di%20Unit%203%20Bangunjiwo" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+<span>Daftar di Unit Ini</span>
+</a>
+</div>
+</div>
+<!-- Branch 4: Unit 5 Ringinharjo -->
+<div class="bg-white rounded-2xl p-6 border border-[#E4EDF7] shadow-sm hover:border-primary transition-all duration-200" data-unit-card id="unit-5">
+<div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-bold bg-[#00C9AB]/20 text-secondary">Unit 5</span>
+<h4 class="text-headline-sm font-headline-sm font-bold text-on-surface">4. Unit 5 Ringinharjo (Bantul Kota)</h4>
+</div>
+<a class="text-label-md font-bold text-primary flex items-center gap-1 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Deresan+Ringinharjo+Bantul" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="map">map</span>
+<span>Lihat di Maps</span>
+</a>
+</div>
+<p class="text-on-surface-variant text-body-md flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5" data-icon="home_pin">home_pin</span>
+<span>Deresan RT 03, Ringinharjo, Bantul (sebelah barat Masjid Khoill Mansyuri)</span>
+</p>
+<div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-outline-variant/20">
+<div class="text-body-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#00C9AB] text-[20px]" data-icon="call">call</span>
+<span>WA: 0895-3652-37465</span>
+</div>
+<a class="cta-coral px-5 py-2.5 rounded-full font-label-md text-label-md font-bold inline-flex items-center gap-2 active:scale-95 transition-all" href="https://wa.me/62895365237465?text=Assalamu%27alaikum%20Admin,%20saya%20ingin%20mendaftar%20bimbel%20di%20Unit%205%20Ringinharjo" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+<span>Daftar di Unit Ini</span>
+</a>
+</div>
+</div>
+<!-- Branch 5: Unit 7 Pajangan -->
+<div class="bg-white rounded-2xl p-6 border border-[#E4EDF7] shadow-sm hover:border-primary transition-all duration-200" data-unit-card id="unit-7">
+<div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-bold bg-[#00C9AB]/20 text-secondary">Unit 7</span>
+<h4 class="text-headline-sm font-headline-sm font-bold text-on-surface">5. Unit 7 Pajangan</h4>
+</div>
+<a class="text-label-md font-bold text-primary flex items-center gap-1 hover:underline" href="https://www.google.com/maps/search/?api=1&amp;query=Kayuhan+Kulon+Triwidadi+Pajangan+Bantul" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="map">map</span>
+<span>Lihat di Maps</span>
+</a>
+</div>
+<p class="text-on-surface-variant text-body-md flex items-start gap-2 mb-4">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5" data-icon="home_pin">home_pin</span>
+<span>Kayuhan Kulon, Triwidadi, Pajangan, Bantul</span>
+</p>
+<div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-outline-variant/20">
+<div class="text-body-sm text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#00C9AB] text-[20px]" data-icon="call">call</span>
+<span>WA: 0817-7528-5108</span>
+</div>
+<a class="cta-coral px-5 py-2.5 rounded-full font-label-md text-label-md font-bold inline-flex items-center gap-2 active:scale-95 transition-all" href="https://wa.me/6281775285108?text=Assalamu%27alaikum%20Admin,%20saya%20ingin%20mendaftar%20bimbel%20di%20Unit%207%20Pajangan" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+<span>Daftar di Unit Ini</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 7. CARA MENDAFTAR (3 STEPS) ==================== -->
+<section class="py-20 bg-[#F3F7FC] border-t border-outline-variant/20">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-label-md text-label-md font-bold uppercase tracking-wider mb-3">
+          Alur Mudah &amp; Cepat
+        </span>
+<h2 class="text-headline-xl font-headline-xl text-primary font-poppins font-extrabold tracking-tight">
+          Cara Mendaftar di Avicena
+        </h2>
+<p class="text-on-surface-variant text-body-lg font-body-lg mt-2">
+          Hanya dengan 3 tahapan simpel, siswa langsung siap memulai kegiatan bimbingan belajar.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow text-center flex flex-col items-center relative">
+<div class="w-16 h-16 rounded-full cta-coral text-white font-bold text-headline-md flex items-center justify-center mb-6 shadow-md">
+            1
+          </div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-3">Pilih Unit Terdekat</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Pilih cabang unit Bimbel Avicena yang paling dekat dengan lokasi rumah Anda atau tentukan metode privat di rumah.
+          </p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow text-center flex flex-col items-center relative">
+<div class="w-16 h-16 rounded-full bg-secondary text-white font-bold text-headline-md flex items-center justify-center mb-6 shadow-md">
+            2
+          </div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-3">Hubungi via WhatsApp</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Klik nomor WhatsApp unit terkait untuk konsultasi kebutuhan materi, jadwal belajar, serta konfirmasi pendaftaran.
+          </p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 border border-[#E4EDF7] custom-shadow text-center flex flex-col items-center relative">
+<div class="w-16 h-16 rounded-full bg-primary text-white font-bold text-headline-md flex items-center justify-center mb-6 shadow-md">
+            3
+          </div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-3">Mulai Belajar Bersama Avicena</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+            Anak siap disambut tutor ramah dan profesional untuk memulai pendampingan belajar yang terarah dan penuh motivasi.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 8. CTA BANNER ==================== -->
+<section class="py-12 bg-[#F3F7FC]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="rounded-3xl bg-gradient-to-r from-[#003A9B] via-[#004EA7] to-[#0060D0] text-white p-8 md:p-14 relative overflow-hidden shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+<!-- Background Orbit Decor -->
+<div class="orbit-ring w-[400px] h-[400px] -right-20 -top-20 opacity-30"></div>
+<div class="orbit-ring-coral w-[250px] h-[250px] left-10 -bottom-20 opacity-25"></div>
+<div class="relative z-10 max-w-2xl text-center lg:text-left">
+<div class="inline-flex items-center gap-2 bg-[#D8E01A] text-[#00398a] px-3.5 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="bolt">bolt</span>
+            Hubungi Admin Kunjungan
+          </div>
+<h2 class="text-headline-xl font-headline-xl font-poppins font-extrabold leading-tight">
+            Bimbel Avicena, Meraih Prestasi Bersama Kami!
+          </h2>
+<p class="text-primary-fixed text-body-lg mt-3">
+            Beri pendampingan terbaik untuk prestasi akademik dan karakter akhlaq anak. Hubungi pusat admin sekarang juga.
+          </p>
+<p class="text-body-sm text-surface-container-high mt-2 font-medium">
+            Admin Kunjungan: <span class="text-white font-bold">0898-8351-325</span> • <span class="text-white font-bold">0896-3795-2708</span>
+</p>
+</div>
+<div class="relative z-10 flex flex-wrap items-center justify-center gap-4 shrink-0">
+<a class="cta-coral px-8 py-4 rounded-full font-label-lg text-label-lg font-bold tracking-wide active:scale-95 transition-all text-base inline-flex items-center gap-2" href="https://wa.me/6281775285108?text=Assalamu%27alaikum%20Admin%20Avicena,%20saya%20ingin%20mendaftar%20bimbel" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]" data-icon="how_to_reg">how_to_reg</span>
+<span>Daftar Sekarang</span>
+</a>
+<a class="px-7 py-4 rounded-full bg-white text-primary hover:bg-surface-container font-label-lg text-label-lg font-bold tracking-wide active:scale-95 transition-all text-base shadow-md inline-flex items-center gap-2" href="https://wa.me/628988351325?text=Halo%20Admin%20Avicena,%20saya%20ingin%20tanya%20informasi%20lengkap" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+<span>Hubungi Admin</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 9. MEDIA SOSIAL SECTION ==================== -->
+<section class="py-16 bg-surface-container-lowest border-t border-outline-variant/30" id="kontak">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-2xl mx-auto mb-10">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-container/40 text-secondary font-label-md text-label-md font-bold uppercase tracking-wider mb-2">
+          Media Sosial
+        </span>
+<h3 class="text-headline-lg font-headline-lg text-primary font-poppins font-bold">
+          Terhubung di Media Sosial Avicena
+        </h3>
+<p class="text-on-surface-variant text-body-md mt-1">
+          Ikuti kabar dan informasi terbaru Avicena melalui kanal kami.
+        </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Instagram Bimbel -->
+<a class="group p-5 rounded-2xl bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary flex items-center gap-4 transition-all duration-200" href="https://www.instagram.com/avicenabimbeljogja/" rel="noopener noreferrer" target="_blank">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
+            IG
+          </div>
+<div>
+<h4 class="font-bold text-on-surface text-label-lg">Instagram Utama</h4>
+<p class="text-primary text-body-sm font-semibold group-hover:underline">@avicenabimbeljogja</p>
+</div>
+</a>
+<!-- Instagram Sekolah Wanita -->
+<a class="group p-5 rounded-2xl bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary flex items-center gap-4 transition-all duration-200" href="https://www.instagram.com/Sekolahwanitaavicena/" rel="noopener noreferrer" target="_blank">
+<div class="w-12 h-12 rounded-xl bg-[#F4604C] text-white flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
+            SW
+          </div>
+<div>
+<h4 class="font-bold text-on-surface text-label-lg">Sekolah Wanita</h4>
+<p class="text-primary text-body-sm font-semibold group-hover:underline">@Sekolahwanitaavicena</p>
+</div>
+</a>
+<!-- Facebook -->
+<a class="group p-5 rounded-2xl bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary flex items-center gap-4 transition-all duration-200" href="https://www.facebook.com/search/top?q=Avicenna%20Bimbel" rel="noopener noreferrer" target="_blank">
+<div class="w-12 h-12 rounded-xl bg-[#1877F2] text-white flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
+            FB
+          </div>
+<div>
+<h4 class="font-bold text-on-surface text-label-lg">Facebook Fanpage</h4>
+<p class="text-primary text-body-sm font-semibold group-hover:underline">Avicenna Bimbel</p>
+</div>
+</a>
+<!-- YouTube -->
+<a class="group p-5 rounded-2xl bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary flex items-center gap-4 transition-all duration-200" href="https://www.youtube.com/results?search_query=Bimbel+Avicena+Jogja" rel="noopener noreferrer" target="_blank">
+<div class="w-12 h-12 rounded-xl bg-[#FF0000] text-white flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
+            YT
+          </div>
+<div>
+<h4 class="font-bold text-on-surface text-label-lg">YouTube Official</h4>
+<p class="text-primary text-body-sm font-semibold group-hover:underline">Bimbel Avicena Jogja</p>
+</div>
+</a>
+</div>
+<div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+<span class="text-body-sm font-semibold text-on-surface-variant">Instagram per unit:</span>
+<a class="px-4 py-2 rounded-full bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary text-primary text-body-sm font-semibold" href="https://www.instagram.com/bimbel_avicena_bangunjiwo/" rel="noopener noreferrer" target="_blank">@bimbel_avicena_bangunjiwo</a>
+<a class="px-4 py-2 rounded-full bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary text-primary text-body-sm font-semibold" href="https://www.instagram.com/bimbel_avicena_tamantirto/" rel="noopener noreferrer" target="_blank">@bimbel_avicena_tamantirto</a>
+<a class="px-4 py-2 rounded-full bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary text-primary text-body-sm font-semibold" href="https://www.instagram.com/bimbel_avicena_ringinharjo/" rel="noopener noreferrer" target="_blank">@bimbel_avicena_ringinharjo</a>
+<a class="px-4 py-2 rounded-full bg-[#F3F7FC] border border-[#E4EDF7] hover:border-primary text-primary text-body-sm font-semibold" href="https://www.instagram.com/bimbel_avicena_sewon/" rel="noopener noreferrer" target="_blank">@bimbel_avicena_sewon</a>
+</div>
+</div>
+</section>
+<!-- ==================== 10. FOOTER ==================== -->
+<footer class="bg-primary dark:bg-on-primary-fixed text-primary-fixed dark:text-inverse-primary border-t border-outline-variant/20 dark:border-outline/10">
+<div class="w-full px-margin-mobile md:px-margin py-space-xl max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+<!-- Brand Column -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<img alt="Logo Bimbel Avicena Yogyakarta" class="h-12 w-auto object-contain bg-white/95 rounded-xl p-1 shadow" height="48" src="assets/logo.png" width="59"/>
+<span class="text-headline-md font-headline-md font-extrabold text-on-primary dark:text-surface-bright tracking-tight">Bimbel Avicena</span>
+</div>
+<p class="text-surface-variant/80 text-body-md leading-relaxed">
+            Lembaga bimbingan belajar ramah anak berlandaskan nilai-nilai Islami dan keunggulan akademik. Mengabdi di Bantul, Daerah Istimewa Yogyakarta sejak tahun 2013.
+          </p>
+
+</div>
+<!-- Quick Links -->
+<div class="lg:col-span-2 flex flex-col gap-3">
+<h4 class="text-on-primary font-bold text-headline-sm">Tautan Cepat</h4>
+<ul class="flex flex-col gap-2 font-body-sm">
+<li><a class="text-surface-variant/80 hover:text-on-primary transition-colors" href="#beranda">Beranda</a></li>
+<li><a class="text-surface-variant/80 hover:text-on-primary transition-colors" href="#program">Program Belajar</a></li>
+<li><a class="text-surface-variant/80 hover:text-on-primary transition-colors" href="#program">Tahsin &amp; Tahfidz</a></li>
+<li><a class="text-surface-variant/80 hover:text-on-primary transition-colors" href="#keunggulan">Keunggulan</a></li>
+<li><a class="text-surface-variant/80 hover:text-on-primary transition-colors" href="#lokasi-cabang">Cabang Bantul</a></li>
+<li><a class="text-surface-variant/80 hover:text-on-primary transition-colors" href="#lokasi-cabang">Pendaftaran</a></li>
+</ul>
+</div>
+<!-- 5 Branches Summary -->
+<div class="lg:col-span-4 flex flex-col gap-3">
+<h4 class="text-on-primary font-bold text-headline-sm">Alamat 5 Unit Cabang Bantul</h4>
+<ul class="flex flex-col gap-2.5 text-body-sm text-surface-variant/80">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px] shrink-0 mt-0.5" data-icon="location_on">location_on</span>
+<span><strong>Unit Pusat:</strong> Sembungan RT 05, Bangunjiwo, Kasihan</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px] shrink-0 mt-0.5" data-icon="location_on">location_on</span>
+<span><strong>Unit 2:</strong> Tegalsari RT 01, DK IV, Tamantirto, Kasihan</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px] shrink-0 mt-0.5" data-icon="location_on">location_on</span>
+<span><strong>Unit 3:</strong> Lemahdadi RT 02, Salakan, Bangunjiwo, Kasihan</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px] shrink-0 mt-0.5" data-icon="location_on">location_on</span>
+<span><strong>Unit 5:</strong> Deresan RT 03, Ringinharjo, Bantul (Barat Masjid)</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px] shrink-0 mt-0.5" data-icon="location_on">location_on</span>
+<span><strong>Unit 7:</strong> Kayuhan Kulon, Triwidadi, Pajangan, Bantul</span>
+</li>
+</ul>
+</div>
+<!-- Legal & Contact -->
+<div class="lg:col-span-2 flex flex-col gap-3">
+<h4 class="text-on-primary font-bold text-headline-sm">Informasi</h4>
+<ul class="flex flex-col gap-2 font-body-sm">
+<li class="pt-2">
+<span class="block text-surface-variant/60 text-[11px] uppercase tracking-wider">Konsultasi WA Pusat:</span>
+<a class="text-secondary-fixed font-bold text-label-md hover:underline" href="https://wa.me/6281775285108">0817-7528-5108</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Copyright Bottom Bar -->
+<div class="pt-8 border-t border-outline-variant/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-body-sm text-surface-variant/70">
+<p>© <span id="year">2026</span> Bimbel Avicena Yogyakarta. Mengabdi dengan Nilai Islami &amp; Prestasi Akademik.</p>
+<p class="flex items-center gap-2">
+<span>Yogyakarta • Indonesia</span>
+<span>•</span>
+<a class="hover:text-white transition-colors flex items-center gap-1" href="#beranda">
+<span>Kembali ke Atas</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_upward">arrow_upward</span>
+</a>
+</p>
+</div>
+</div>
+</footer>
+<!-- ==================== 11. FLOATING WHATSAPP BUTTON ==================== -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+<!-- Floating Badge -->
+<a class="hidden sm:flex items-center bg-white text-on-surface px-4 py-2 rounded-full shadow-2xl border border-outline-variant/40 hover:bg-surface-container-low transition-colors duration-150" href="https://wa.me/6281775285108?text=Assalamu%27alaikum%20Admin%20Avicena,%20saya%20ingin%20konsultasi%20program%20belajar" rel="noopener noreferrer" target="_blank">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping mr-2"></span>
+<span class="font-bold text-label-md text-primary">Chat Admin Avicena</span>
+</a>
+<!-- Green Pulse WhatsApp FAB -->
+<a class="relative group w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-200" href="https://wa.me/6281775285108?text=Assalamu%27alaikum%20Admin%20Avicena,%20saya%20ingin%20konsultasi%20program%20belajar" rel="noopener noreferrer" target="_blank" title="Hubungi Admin WhatsApp">
+<!-- Pulse Rings -->
+<span class="absolute inset-0 rounded-full bg-[#25D366] opacity-40 animate-ping -z-10" style="animation-duration: 2.5s;"></span>
+<!-- Material icon call/chat -->
+<span class="material-symbols-outlined text-[30px]" data-icon="chat" data-weight="fill" style="font-variation-settings: 'FILL' 1;">chat</span>
+</a>
+</div>
+<!-- Peta: Leaflet + OpenStreetMap -->
+<script src="assets/leaflet/leaflet.js"></script>
+<script>
+  // Koordinat masih perkiraan tingkat desa. Ganti lat/lng dengan titik pasti dari Google Maps
+  // (klik kanan di lokasi unit > salin angka koordinat).
+  const UNITS = [
+    { id: 'unit-pusat', name: 'Unit Pusat Sembungan', lat: -7.8390, lng: 110.3330, pusat: true },
+    { id: 'unit-2',     name: 'Unit 2 Tamantirto',    lat: -7.8270, lng: 110.3290 },
+    { id: 'unit-3',     name: 'Unit 3 Bangunjiwo',    lat: -7.8530, lng: 110.3270 },
+    { id: 'unit-5',     name: 'Unit 5 Ringinharjo',   lat: -7.8890, lng: 110.3270 },
+    { id: 'unit-7',     name: 'Unit 7 Pajangan',      lat: -7.8700, lng: 110.2740 }
+  ];
+
+  (function initMap() {
+    const el = document.getElementById('map');
+    if (!el || typeof L === 'undefined') return;
+    const map = L.map(el, { scrollWheelZoom: false, zoomControl: true });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+    }).addTo(map);
+
+    const markers = {};
+    const cards = document.querySelectorAll('[data-unit-card]');
+    const HL = ['ring-4', 'ring-[#F4604C]/40'];
+
+    function highlight(id) {
+      cards.forEach(c => c.classList.remove(...HL));
+      const card = document.getElementById(id);
+      if (card) {
+        card.classList.add(...HL);
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    UNITS.forEach(u => {
+      const icon = L.divIcon({
+        className: '',
+        html: '<span class="av-pin' + (u.pusat ? ' pusat' : '') + '"></span>',
+        iconSize: [34, 34],
+        iconAnchor: [17, 34],
+        popupAnchor: [0, -34]
+      });
+      const m = L.marker([u.lat, u.lng], { icon, title: u.name, alt: u.name }).addTo(map);
+      m.bindPopup('<strong>' + u.name + '</strong>');
+      m.on('click', () => highlight(u.id));
+      markers[u.id] = m;
+    });
+
+    cards.forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('a')) return;
+        const u = UNITS.find(x => x.id === card.id);
+        if (!u) return;
+        map.flyTo([u.lat, u.lng], 15, { duration: 0.8 });
+        markers[u.id].openPopup();
+      });
+    });
+
+    map.fitBounds(UNITS.map(u => [u.lat, u.lng]), { padding: [40, 40], maxZoom: 14 });
+    map.on('click', () => map.scrollWheelZoom.enable());
+    el.addEventListener('mouseleave', () => map.scrollWheelZoom.disable());
+  })();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const target = document.querySelector(targetId);
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      }
+    });
+  });
+</script>
+</body></html>
